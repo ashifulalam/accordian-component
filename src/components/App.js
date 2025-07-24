@@ -25,7 +25,6 @@ export default function App() {
 }
 
 function Accordion({ data }) {
-  // Track which accordion item is open (null = all closed)
   const [curOpen, setCurOpen] = useState(null);
 
   return (
@@ -47,12 +46,10 @@ function Accordion({ data }) {
 }
 
 function AccordionItem({ num, title, curOpen, onOpen, children }) {
-  // Check if THIS item is the one that's open
   const isOpen = num === curOpen;
   //const [isOpen, setIsOpen] = useState(false);
 
   function handleToggle() {
-    // If open → close it (null), if closed → open it (num)
     onOpen(isOpen ? null : num);
   }
 
@@ -61,7 +58,6 @@ function AccordionItem({ num, title, curOpen, onOpen, children }) {
       <p className="number">{num < 9 ? `0${1 + num}` : 1 + num}</p>
       <p className="title">{title}</p>
       <p className="icon">{isOpen ? "-" : "+"}</p>
-      {/* Only show content when this item is open */}
       {isOpen && <div className="content-box">{children}</div>}
     </div>
   );
